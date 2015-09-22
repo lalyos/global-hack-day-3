@@ -1,6 +1,6 @@
 # Runnable Containers
 
-This project helps aims to create runnable containers:
+This project aims to create runnable containers:
 
 - Single-file download
 - Should run on any linux
@@ -13,7 +13,17 @@ Use-cases include:
 - Create test databases which are just a single runnable file (no Docker daemon)
 - Really create _any_ Docker image based service as single binary ... without Docker daemon
 
-## Solution
+# Usage
+
+Specify the Docker image name you want to base on.
+
+```
+./create-container alpine
+```
+
+It will create a runnable `konatiner-alpine` binary. Bring it to any linux, and start an alpine container by: `./konatiner-alpine`
+
+## Architecture ;)
 
 - Create a statically linked runc
 - Export a Docker container started from a specific image
@@ -35,3 +45,6 @@ cd runc-binary
 make build
 ```
 
+## Global-hack-day-3
+
+I’ve sent a WIP (not-working) version at the deadline, and finished it later ...

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 : ${DEBUG:=1}
 : ${TEMP_DIR:=exploded}
 
@@ -22,19 +24,12 @@ create_tar() {
   docker rm -f $id &>/dev/null && debug "docker container is deleted: $id" || debug "container couldnt be deleted: $id"
 }
 
-
-create_dir() {
-    rm -rf $TEMP_DIR
-    mkdir -p $TEMP_DIR/rootfs
-
-    tar -xvf container.tar -C exploded/rootfs/
-    
-
-}
-
 main() {
+    #docker build -t lalyos/kontainer .
     create_tar "$@"
-    #create_dir
+    docker build -t kont -f Dockerfile.kontainer .
+    docker run kont cat /go/src/scratch/kontainer > kontainer-$1
+    chmod +x kontainer-$1
 }
 
 [[ "$0" == "$BASH_SOURCE" ]] && main "$@"
