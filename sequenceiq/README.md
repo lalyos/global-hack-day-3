@@ -23,6 +23,15 @@ Specify the Docker image name you want to base on.
 
 It will create a runnable `konatiner-alpine` binary. Bring it to any linux, and start an alpine container by: `./konatiner-alpine`
 
+## Example Runnable Conatiner fro alpine Docker image
+
+You can try the result of the `./create-container alpine` directly from the [github release page](https://github.com/lalyos/global-hack-day-3/releases/download/v0.3/)
+
+So here is the obligatory single-line installer (tm)
+```
+curl -L http://j.mp/runnable-container | tar -xz && ./kontainer-alpine
+```
+
 ## Architecture ;)
 
 - Create a statically linked runc
