@@ -5,8 +5,8 @@ RUN go get github.com/progrium/go-shell
 
 ENV TMP_DIR /kontainer
 RUN mkdir -p $TMP_DIR/rootfs
-#ADD https://github.com/sequenceiq/global-hack-day-3/releases/download/v0.3/runc-0.3.tgz $TMP_DIR/rootfs/
-ADD ./runc-binary/release/runc $TMP_DIR/
+ADD https://github.com/sequenceiq/global-hack-day-3/releases/download/v0.3/runc $TMP_DIR/
+RUN chmod +x $TMP_DIR/runc
 ADD ./container.go /go/src/scratch/
 
 ONBUILD ADD *.json $TMP_DIR/
